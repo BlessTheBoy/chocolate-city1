@@ -1,9 +1,19 @@
 .app {
-  padding: 1rem;
+  font-family: "Roboto", sans-serif;
 }
 
 .container {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
+}
+
+.ul {
+  list-style: none;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
