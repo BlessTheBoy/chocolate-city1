@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import Artist from "./pages/Aritist";
+import Album from "./pages/Album";
 
 function App() {
   return (
@@ -14,18 +15,18 @@ function App() {
         {/* Pages */}
         <div className="container">
           <Switch>
-            <Route path="/about">{/* <About /> */}</Route>
-            <Route path="/contact">{/* <Users /> */}</Route>
+            {/* Aritist Album page */}
+            <Route path="/artist/:username/Album:id">
+              <Album />
+            </Route>
 
             {/* Aritist page */}
             <Route path="/artist/:username">
               <Artist />
             </Route>
 
-            {/* Aritist Album page */}
-            <Route path="/artist/:username/:title">
-              <Artist />
-            </Route>
+            <Route path="/about">{/* <About /> */}</Route>
+            <Route path="/contact">{/* <Users /> */}</Route>
 
             <Route path="/">
               {/* Home page */}

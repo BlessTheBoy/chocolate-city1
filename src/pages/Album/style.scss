@@ -1,0 +1,68 @@
+@import "../../utils/functions.scss";
+@import "../../utils/variables.scss";
+@import "../../utils/breakpoints.scss";
+
+.album {
+  padding-top: $pagePaddingTop;
+
+  &_header {
+    display: grid;
+    grid-template-areas:
+      "album"
+      "title"
+      "username";
+    text-align: center;
+    margin-bottom: 3rem;
+
+    > h1 {
+      grid-area: title;
+      font-style: italic;
+      font-weight: bold;
+      font-size: rem(40);
+    }
+
+    > h2 {
+      grid-area: album;
+      margin-bottom: 1rem;
+      font-family: Roboto;
+      font-style: italic;
+      font-weight: bold;
+      font-size: rem(20);
+      line-height: rem(23);
+    }
+
+    > p {
+      grid-area: username;
+      a {
+        color: $blue;
+      }
+    }
+  }
+
+  &_carousel {
+    margin-bottom: 3rem;
+
+    .carousel {
+      .control-dots {
+        display: none;
+      }
+      .thumbs-wrapper {
+        display: none;
+      }
+      .slide {
+        a {
+          display: inline-block;
+          height: 100%;
+          width: 80%;
+          max-width: 300px;
+        }
+        img {
+          width: 100%;
+        }
+        .legend {
+          bottom: 20px;
+        }
+      }
+    }
+  }
+}

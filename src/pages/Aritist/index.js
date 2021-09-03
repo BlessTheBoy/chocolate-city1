@@ -46,7 +46,7 @@ function Artist() {
           <ol>
             {albums.map((album) => (
               <li>
-                <Link to={`/artist/${artist.username}/${album.title}`}>
+                <Link to={`/artist/${artist.username}/Album${album.id}`}>
                   {album.title}
                 </Link>
               </li>

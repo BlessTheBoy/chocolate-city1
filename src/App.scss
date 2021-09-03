@@ -38,3 +38,12 @@ a {
   border: 2px solid $blue;
   border-radius: rem(8);
 }
+
+h2 {
+  font-style: italic;
+  font-weight: bold;
+  font-size: rem(18);
+  line-height: rem(21);
+  color: rgba(0, 0, 0, 0.8);
+  margin: 1rem 0;
+}
