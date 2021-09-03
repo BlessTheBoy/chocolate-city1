@@ -39,6 +39,14 @@ a {
   border-radius: rem(8);
 }
 
+h1 {
+  margin: 1rem 0;
+  font-style: italic;
+  font-weight: bold;
+  font-size: rem(20);
+  line-height: rem(23);
+}
+
 h2 {
   font-style: italic;
   font-weight: bold;
@@ -46,4 +54,21 @@ h2 {
   line-height: rem(21);
   color: rgba(0, 0, 0, 0.8);
   margin: 1rem 0;
+}
+
+button,
+.button {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.6rem 2rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: $blue;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $blueHover;
+  }
 }

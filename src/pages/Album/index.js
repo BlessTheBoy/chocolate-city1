@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "./style.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import Comment from "./../../components/Comment";
 
 function Album() {
   let { username, id } = useParams();
@@ -14,11 +15,11 @@ function Album() {
 
   // getting title if it is not passed as a prop
   useEffect(() => {
-      fetch("https://jsonplaceholder.typicode.com/albums")
-        .then((response) => response.json())
-        .then((data) =>
-          setTitle(data.find((album) => album.id === Number(id)).title)
-        );
+    fetch("https://jsonplaceholder.typicode.com/albums")
+      .then((response) => response.json())
+      .then((data) =>
+        setTitle(data.find((album) => album.id === Number(id)).title)
+      );
   }, [id]);
 
   // Retrieving album photos and comments
@@ -59,7 +60,19 @@ function Album() {
           </Carousel>
         )}
       </div>
-      <div className="album_comments"></div>
+      <div className="album_comments">
+        <div className="header">
+          <h2>Comments</h2>
+          <button>Add comment</button>
+        </div>
+        {comments && (
+          <div className="list">
+            {comments.map(({ id, name, email, body }) => (
+              <Comment key={id} id={id} name={name} email={email} body={body} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
