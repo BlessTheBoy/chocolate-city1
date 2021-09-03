@@ -16,22 +16,33 @@ function Home() {
   return (
     <div className="home">
       <h1 className="home_heading">Artists</h1>
-      {artists &&
-        artists.map(
-          ({ id, name, username, email, address, phone, website, company }) => (
-            <ArtistCard
-              key={id}
-              id={id}
-              name={name}
-              username={username}
-              email={email}
-              address={address}
-              phone={phone}
-              website={website}
-              company={company}
-            />
-          )
-        )}
+      <div className="artistList">
+        {artists &&
+          artists.map(
+            ({
+              id,
+              name,
+              username,
+              email,
+              address,
+              phone,
+              website,
+              company,
+            }) => (
+              <ArtistCard
+                key={id}
+                id={id}
+                name={name}
+                username={username}
+                email={email}
+                address={address}
+                phone={phone}
+                website={website}
+                company={company}
+              />
+            )
+          )}
+      </div>
     </div>
   );
 }

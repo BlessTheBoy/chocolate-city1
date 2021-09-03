@@ -13,7 +13,7 @@ function ArtistCard({
   company,
 }) {
   return (
-    <Link to={`/artist/${id}`}>
+    <Link to={`/artist/${username}`}>
       <div className="artistCard">
         <img
           src={artistImage}
@@ -36,12 +36,14 @@ function ArtistCard({
           </div>
           <div className="artistCard_details2">
             <address className="address">
+              <p className="subhead">Address</p>
               <span>{address.street}</span> <br />
               <span>{address.suite}</span>
               <span>{address.city}</span>
               <span className="address_zip">{address.zipcode}</span>
             </address>
             <div className="company">
+              <p className="subhead">company</p>
               <p>
                 <strong>{company.name}</strong>
               </p>

@@ -1,0 +1,22 @@
+@import "../../utils/functions.scss";
+@import "../../utils/variables.scss";
+@import "../../utils/breakpoints.scss";
+
+.home {
+  padding-top: $pagePaddingTop;
+
+  &_heading {
+    margin-bottom: 1rem;
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: bold;
+    font-size: rem(20);
+    line-height: rem(23);
+  }
+}
+
+.artistList {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1rem;
+}

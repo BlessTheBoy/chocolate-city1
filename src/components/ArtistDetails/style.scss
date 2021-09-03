@@ -2,17 +2,9 @@
 @import "../../utils/variables.scss";
 @import "../../utils/breakpoints.scss";
 
-.artistCard {
-  padding: 1rem;
+.artistDetails {
   display: flex;
-  background: #fcfcfc;
-  border-radius: rem(10);
 
-  &:hover,
-  &:focus {
-    background: #f1f0f0;
-    color: initial;
-  }
 
   &_image {
     object-fit: contain;
