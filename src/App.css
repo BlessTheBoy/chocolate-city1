@@ -8,12 +8,18 @@
   margin: 0 auto;
 }
 
-.ul {
+ul {
   list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: initial;
 }
 
 *,
 *::after,
 *::before {
   box-sizing: border-box;
+  margin: 0;
 }

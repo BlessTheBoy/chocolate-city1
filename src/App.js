@@ -15,6 +15,7 @@ function App() {
           <Switch>
             <Route path="/about">{/* <About /> */}</Route>
             <Route path="/contact">{/* <Users /> */}</Route>
+            <Route path="/artist/:id">{/* <Aritist /> */}</Route>
             <Route path="/">
               {/* Home page */}
 
