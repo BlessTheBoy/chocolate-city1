@@ -4,7 +4,7 @@ import artistImage from "../../assets/artistImage.png";
 function Comment({ id, name, email, body }) {
   return (
     <div className="comment">
-      <div className="header">
+      <div className="comment_header">
         <img src={artistImage} alt="" />
         <div className="header_details">
           <p className="name">{name}</p>

@@ -2,6 +2,34 @@
 @import "../../utils/variables.scss";
 @import "../../utils/breakpoints.scss";
 
-.comment{
-  
+.comment {
+  padding: 1.5rem;
+  border-radius: rem(10);
+  background: #f7f7f7;
+  margin-bottom: 1.2rem;
+
+  &_header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    img {
+      width: rem(40);
+      object-fit: contain;
+      border-radius: 50%;
+      border: 1px solid blue;
+      margin-right: 1rem;
+    }
+    .header_details {
+      flex: 1;
+
+      .name {
+        font-size: 1rem;
+        font-weight: bold;
+      }
+      .email {
+        font-size: 0.8rem;
+      }
+    }
+  }
 }
