@@ -77,3 +77,105 @@
     }
   }
 }
+.albumModal {
+  // width: 80%;
+  // max-width: rem(500);
+  h3 {
+    text-align: center;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  form {
+    .input_group {
+      margin-bottom: 1rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-areas:
+        "label err"
+        "input input";
+
+      label {
+        grid-area: label;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+      .err {
+        grid-area: err;
+        color: $errRed;
+        font-size: 0.8rem;
+        font-style: italic;
+        display: none;
+      }
+      input,
+      textarea {
+        grid-area: input;
+        display: block;
+        border: 1px solid grey;
+        outline: none;
+        padding: 0.5rem;
+        font-size: 1rem;
+        width: 100%;
+        margin-top: 0.4rem;
+        border-radius: rem(6);
+
+        &:focus {
+          border-color: $blue;
+        }
+      }
+
+      &.error {
+        .err {
+          display: inline-block;
+        }
+        input,
+        textarea {
+          border-color: $errRed;
+        }
+      }
+
+      &.success {
+        .err {
+          display: none;
+        }
+        input,
+        textarea {
+          border-color: $blue;
+        }
+      }
+    }
+    .buttons {
+      text-align: center;
+      margin: 2rem 0 1rem;
+
+      :first-child {
+        margin-right: 1rem;
+        background-color: transparent;
+        border: 1px solid black;
+        color: #000;
+        transition: all 3ms ease-out;
+
+        &:hover {
+          background-color: black;
+          color: #fff;
+        }
+      }
+
+      :nth-child(2) {
+        border: 1px solid $blue;
+        padding: 0.6rem 2.5rem;
+
+        &:hover {
+          border: 1px solid $blueHover;
+        }
+
+        &:disabled {
+          color: rgba(255, 255, 255, 0.3);
+          background-color: rgba(19, 1, 1, 0.3);
+          border-color: rgba(195, 195, 195, 0.3);
+        }
+      }
+    }
+  }
+}
