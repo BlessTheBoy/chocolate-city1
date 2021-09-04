@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/chocolate-city1/static/css/main.bd075a96.chunk.css",
+    "main.js": "/chocolate-city1/static/js/main.31be1de1.chunk.js",
+    "main.js.map": "/chocolate-city1/static/js/main.31be1de1.chunk.js.map",
+    "runtime-main.js": "/chocolate-city1/static/js/runtime-main.0a4815d0.js",
+    "runtime-main.js.map": "/chocolate-city1/static/js/runtime-main.0a4815d0.js.map",
+    "static/css/2.4ce9e501.chunk.css": "/chocolate-city1/static/css/2.4ce9e501.chunk.css",
+    "static/js/2.9b6dfde5.chunk.js": "/chocolate-city1/static/js/2.9b6dfde5.chunk.js",
+    "static/js/2.9b6dfde5.chunk.js.map": "/chocolate-city1/static/js/2.9b6dfde5.chunk.js.map",
+    "static/js/3.f9664ef6.chunk.js": "/chocolate-city1/static/js/3.f9664ef6.chunk.js",
+    "static/js/3.f9664ef6.chunk.js.map": "/chocolate-city1/static/js/3.f9664ef6.chunk.js.map",
+    "index.html": "/chocolate-city1/index.html",
+    "static/css/2.4ce9e501.chunk.css.map": "/chocolate-city1/static/css/2.4ce9e501.chunk.css.map",
+    "static/css/main.bd075a96.chunk.css.map": "/chocolate-city1/static/css/main.bd075a96.chunk.css.map",
+    "static/js/2.9b6dfde5.chunk.js.LICENSE.txt": "/chocolate-city1/static/js/2.9b6dfde5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0a4815d0.js",
+    "static/css/2.4ce9e501.chunk.css",
+    "static/js/2.9b6dfde5.chunk.js",
+    "static/css/main.bd075a96.chunk.css",
+    "static/js/main.31be1de1.chunk.js"
+  ]
+}
