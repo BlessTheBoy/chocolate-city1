@@ -20,7 +20,7 @@ const customStyles = {
 };
 
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
-// Modal.setAppElement("#album");
+Modal.setAppElement("#root");
 
 function Album() {
   let { username, id } = useParams();
@@ -29,6 +29,25 @@ function Album() {
   const [title, setTitle] = useState(null);
   const [photos, setPhotos] = useState(null);
   const [comments, setComments] = useState(null);
+
+  // Modal variables and element references
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const postButton = useRef(null);
+  const nameInput = useRef(null);
+  const emailInput = useRef(null);
+  const commentInput = useRef(null);
+  const nameInputGroup = useRef(null);
+  const emailInputGroup = useRef(null);
+  const commentInputGroup = useRef(null);
+  const nameError = useRef(null);
+  const emailError = useRef(null);
+  const commentError = useRef(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [comment, setComment] = useState("");
+  const [validName, setValidName] = useState(false);
+  const [validEmail, setValidEmail] = useState(false);
+  const [validComment, setValidComment] = useState(false);
 
   // getting title if it is not passed as a prop
   useEffect(() => {
@@ -54,32 +73,12 @@ function Album() {
       });
   }, [id]);
 
-  // Modal variables
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const postButton = useRef(null);
-  const nameInputGroup = useRef(null);
-  const emailInputGroup = useRef(null);
-  const commentInputGroup = useRef(null);
-  const nameError = useRef(null);
-  const emailError = useRef(null);
-  const commentError = useRef(null);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [comment, setComment] = useState("");
-  const [validName, setValidName] = useState(false);
-  const [validEmail, setValidEmail] = useState(false);
-  const [validComment, setValidComment] = useState(false);
-
-  if (validName && validEmail && validComment) {
-    postButton.current.disabled = false;
-  }
-
   function openModal() {
     setIsOpen(true);
   }
 
   function validateEmail(mail) {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+    if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
       return true;
     }
     return false;
@@ -106,16 +105,53 @@ function Album() {
       inputGroup.current.classList.remove("error");
       inputGroup.current.classList.add("success");
       validState(true);
+
+      if (validName && validEmail && validComment) {
+        postButton.current.disabled = false;
+      }
     }
   }
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
     // subtitle.style.color = "#f00";
+    autofocus();
+  }
+
+  // Function for focusing input on modal open
+  function autofocus() {
+    if (!name || !validName) {
+      nameInput.current.focus();
+    } else if (!email || !validEmail) {
+      emailInput.current.focus();
+    } else {
+      commentInput.current.focus();
+    }
   }
 
   function closeModal() {
     setIsOpen(false);
+    setComment("");
+  }
+
+  function submitComment(e) {
+    e.preventDefault();
+
+    if (validName && validEmail && validComment) {
+      setComments([
+        {
+          id: 500 + comments.length,
+          name: name,
+          email: email,
+          body: comment,
+        },
+        ...comments,
+      ]);
+
+      closeModal();
+
+      // alert("comment added successfully");
+    }
   }
 
   return (
@@ -130,8 +166,11 @@ function Album() {
       >
         <div className="albumModal">
           <h3>Comment</h3>
-          <form>
-            <div className="input_group" ref={nameInputGroup}>
+          <form onSubmit={submitComment}>
+            <div
+              className={`input_group ${validName && "success"}`}
+              ref={nameInputGroup}
+            >
               <label htmlFor="name">Name</label>
               <span className="err" ref={nameError}>
                 error message
@@ -141,6 +180,7 @@ function Album() {
                 name="name"
                 id="name"
                 value={name}
+                ref={nameInput}
                 onChange={(e) =>
                   validate(
                     e.target.value,
@@ -152,7 +192,10 @@ function Album() {
                 }
               />
             </div>
-            <div className="input_group" ref={emailInputGroup}>
+            <div
+              className={`input_group ${validEmail && "success"}`}
+              ref={emailInputGroup}
+            >
               <label htmlFor="email">Email</label>
               <span className="err" ref={emailError}>
                 error message
@@ -161,6 +204,7 @@ function Album() {
                 type="email"
                 name="email"
                 id="email"
+                ref={emailInput}
                 value={email}
                 onChange={(e) =>
                   validate(
@@ -173,7 +217,10 @@ function Album() {
                 }
               />
             </div>
-            <div className="input_group" ref={commentInputGroup}>
+            <div
+              className={`input_group ${validComment && "success"}`}
+              ref={commentInputGroup}
+            >
               <label htmlFor="comment">Comment</label>
               <span className="err" ref={commentError}>
                 error message
@@ -184,6 +231,7 @@ function Album() {
                 cols="30"
                 rows="10"
                 value={comment}
+                ref={commentInput}
                 onChange={(e) =>
                   validate(
                     e.target.value,
@@ -197,9 +245,13 @@ function Album() {
             </div>
             <div className="buttons">
               <button onClick={closeModal}>Cancel</button>
-              <button onClick={closeModal} ref={postButton} disabled>
-                Post
-              </button>
+              <input
+                type="submit"
+                value="Post"
+                ref={postButton}
+                disabled
+                className="button"
+              />
             </div>
           </form>
         </div>
@@ -214,7 +266,7 @@ function Album() {
       </div>
       <div className="album_carousel">
         {photos && (
-          <Carousel>
+          <Carousel showThumbs={false}>
             {photos.map((photo) => (
               <div key={photo.id}>
                 <a href={photo.url}>
